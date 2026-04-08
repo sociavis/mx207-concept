@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MX207 — Lyman, Maine | Est. 2003</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════
+   MX207 — Concept Redesign by Socia Visual
+   Authentic track site. Let the dirt do the talking.
+   ═══════════════════════════════════════════════════════ */
+
+:root {
+  --bg: #111111;
+  --bg-card: #191919;
+  --bg-card-hover: #1e1e1e;
+  --border: #2a2a2a;
+  --border-light: #333;
+  --text: #e8e8e8;
+  --text-mid: #999;
+  --text-dim: #666;
+  --gold: #b8a04c;
+  --gold-dim: #8a7838;
+  --white: #f5f5f5;
+  --red-badge: #cc2222;
+  --font-display: 'Teko', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--gold); text-decoration: none; }
+a:hover { color: var(--white); }
+img { max-width: 100%; display: block; }
+
+/* ── NAV ── */
+.site-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(17,17,17,0.97);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1.5rem; height: 70px;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 1rem;
+  text-decoration: none;
+}
+.nav-logo {
+  overflow: hidden;
+  height: 36px;
+  display: flex;
+  align-items: center;
+}
+.nav-logo-img {
+  height: 64px;
+  width: auto;
+  margin-top: -2px;
+}
+.nav-links {
+  display: flex; gap: 0.25rem; list-style: none;
+  flex-wrap: wrap;
+}
+.nav-links li { position: relative; }
+.nav-links a {
+  display: block; padding: 0.5rem 0.85rem;
+  font-family: var(--font-display); font-size: 0.95rem;
+  font-weight: 500; color: var(--text-mid);
+  letter-spacing: 0.06em; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover,
+.nav-links a.active { color: var(--white); }
+/* Dropdown */
+.nav-dropdown { position: relative; }
+.nav-dropdown-menu {
+  display: none; position: absolute; top: 100%; left: 0;
+  background: #1a1a1a; border: 1px solid var(--border);
+  min-width: 220px; padding: 0.5rem 0; z-index: 200;
+}
+.nav-dropdown:hover .nav-dropdown-menu { display: block; }
+.nav-dropdown-menu a {
+  padding: 0.5rem 1.2rem; font-size: 0.85rem;
+  display: block; white-space: nowrap;
+}
+.nav-dropdown-menu a:hover { background: var(--bg-card); }
+/* Hamburger */
+.nav-hamburger {
+  display: none; background: none; border: none;
+  color: var(--white); font-size: 1.5rem; cursor: pointer;
+  padding: 0.5rem;
+}
+.nav-mobile-overlay {
+  display: none; position: fixed; inset: 0; z-index: 150;
+  background: rgba(0,0,0,0.95); padding: 5rem 2rem 2rem;
+  flex-direction: column; gap: 0.25rem; overflow-y: auto;
+}
+.nav-mobile-overlay.open { display: flex; }
+.nav-mobile-overlay a {
+  display: block; padding: 0.75rem 0;
+  font-family: var(--font-display); font-size: 1.4rem;
+  font-weight: 500; color: var(--text-mid);
+  letter-spacing: 0.06em; text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+  transition: color 0.2s;
+}
+.nav-mobile-overlay a:hover { color: var(--white); }
+.nav-mobile-close {
+  position: absolute; top: 1.25rem; right: 1.5rem;
+  background: none; border: none; color: var(--white);
+  font-size: 2rem; cursor: pointer;
+}
+
+/* ── PAGE SYSTEM ── */
+.page { display: none; padding-top: 70px; min-height: 100vh; }
+.page.active { display: block; }
+
+/* ── HERO ── */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 8rem 2rem;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+.hero-video-wrap {
+  position: absolute; inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.hero-video-wrap iframe {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 120vw; height: 120vh;
+  min-width: 180vh; min-height: 100vw;
+  transform: translate(-50%, -50%);
+  border: 0;
+}
+.hero-bg-texture {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(8,8,8,0.45) 0%, rgba(8,8,8,0.6) 50%, rgba(17,17,17,0.95) 100%);
+  z-index: 1;
+}
+.hero-content { position: relative; z-index: 2; }
+.hero-photo-credit { z-index: 2; }
+.hero-logo-mark {
+  max-width: 500px;
+  width: 80vw;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.hero-logo-mark img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 4px 40px rgba(0,0,0,0.5));
+  margin-top: -22%;
+  margin-bottom: -18%;
+}
+.hero-tagline {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 400;
+  color: var(--text-mid);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-top: -0.25rem;
+}
+.hero-actions {
+  margin-top: 1.5rem;
+  display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+}
+.hero-photo-credit {
+  position: absolute; bottom: 1.5rem; right: 2rem;
+  font-family: var(--font-mono); font-size: 0.6rem;
+  color: var(--text-dim); letter-spacing: 0.1em;
+}
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.7rem 1.8rem;
+  font-family: var(--font-display); font-weight: 600;
+  font-size: 0.95rem; letter-spacing: 0.08em;
+  text-transform: uppercase; border: none;
+  cursor: pointer; transition: all 0.2s; text-decoration: none;
+}
+.btn-gold {
+  background: var(--gold); color: #111;
+}
+.btn-gold:hover { background: #c9b05d; color: #111; }
+.btn-outline {
+  background: transparent; color: var(--text-mid);
+  border: 1px solid var(--border-light);
+}
+.btn-outline:hover { border-color: var(--gold); color: var(--white); }
+
+/* ── HOME SECTIONS ── */
+.home-grid {
+  max-width: 1200px; margin: 0 auto;
+  padding: 3rem 1.5rem;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.home-card {
+  display: block; position: relative; overflow: hidden;
+  background: var(--bg-card); border: 1px solid var(--border);
+  aspect-ratio: 4/3; transition: border-color 0.3s;
+  cursor: pointer; text-decoration: none;
+}
+.home-card:hover { border-color: var(--gold-dim); }
+.home-card-bg {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s ease;
+}
+.home-card:hover .home-card-bg {
+  transform: scale(1.04);
+}
+.home-card-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.85) 100%);
+}
+.home-card-label {
+  position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem;
+}
+.home-card-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem; font-weight: 600;
+  color: var(--white); letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.home-card-sub {
+  font-size: 0.8rem; color: var(--text-mid);
+  margin-top: 0.25rem;
+}
+
+/* ── UPCOMING NEXT ── */
+.upcoming-bar {
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.upcoming-inner {
+  max-width: 1200px; margin: 0 auto;
+  padding: 2rem 1.5rem;
+  display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+}
+.upcoming-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem; color: var(--gold);
+  letter-spacing: 0.25em; text-transform: uppercase;
+  white-space: nowrap;
+}
+.upcoming-event {
+  font-family: var(--font-display);
+  font-size: 1.3rem; font-weight: 500;
+  color: var(--white); letter-spacing: 0.04em;
+}
+.upcoming-date {
+  font-family: var(--font-mono);
+  font-size: 0.8rem; color: var(--text-mid);
+  margin-left: auto;
+}
+
+/* ── INFO BAR (practice hours, quick info) ── */
+.info-bar {
+  max-width: 1200px; margin: 0 auto;
+  padding: 3rem 1.5rem;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+.info-block {
+  padding: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+.info-block-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem; font-weight: 600;
+  color: var(--gold); letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.info-block p {
+  color: var(--text-mid); font-size: 0.85rem; line-height: 1.7;
+}
+.info-block a { color: var(--gold); }
+
+/* ── SOCIAL FEED PLACEHOLDER ── */
+.social-section {
+  max-width: 1200px; margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+.social-header {
+  display: flex; align-items: center; gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.social-header-text {
+  font-family: var(--font-mono);
+  font-size: 0.75rem; color: var(--text-dim);
+  letter-spacing: 0.15em;
+}
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.5rem;
+}
+.social-item {
+  aspect-ratio: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+}
+.social-item-placeholder {
+  font-family: var(--font-mono);
+  font-size: 0.6rem; color: var(--text-dim);
+  letter-spacing: 0.1em; text-align: center;
+  padding: 1rem;
+}
+
+/* ── PAGE HEADER ── */
+.page-header {
+  padding: 4rem 1.5rem 2rem;
+  max-width: 1200px; margin: 0 auto;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+.page-header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700; letter-spacing: 0.04em;
+  color: var(--white); text-transform: uppercase;
+}
+.page-header .subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.75rem; color: var(--gold);
+  letter-spacing: 0.2em; margin-top: 0.5rem;
+}
+
+/* ── CONTENT LAYOUT ── */
+.content {
+  max-width: 1200px; margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+}
+.content p {
+  color: var(--text-mid); margin-bottom: 1rem;
+  max-width: 700px; line-height: 1.75;
+}
+.content h2 {
+  font-family: var(--font-display);
+  font-size: 1.8rem; font-weight: 600;
+  color: var(--white); letter-spacing: 0.04em;
+  margin: 2.5rem 0 1rem; text-transform: uppercase;
+}
+.content h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem; font-weight: 500;
+  color: var(--text); letter-spacing: 0.04em;
+  margin: 2rem 0 0.75rem;
+}
+.content ul, .content ol {
+  color: var(--text-mid); margin: 0.5rem 0 1.5rem 1.5rem;
+  line-height: 1.8;
+}
+.content strong { color: var(--text); }
+
+/* ── SCHEDULE TABLE ── */
+.schedule-table {
+  width: 100%; border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+.schedule-table th {
+  font-family: var(--font-display);
+  font-size: 0.85rem; font-weight: 600;
+  color: var(--gold); letter-spacing: 0.12em;
+  text-transform: uppercase; text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid var(--border-light);
+}
+.schedule-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+  vertical-align: top;
+}
+.schedule-table tr:hover { background: var(--bg-card); }
+.schedule-table .date-col {
+  font-family: var(--font-mono);
+  font-size: 0.8rem; color: var(--gold);
+  white-space: nowrap; width: 160px;
+}
+.schedule-table .event-col { color: var(--text); font-weight: 500; }
+.schedule-table .event-col a {
+  color: var(--text); text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  transition: border-color 0.2s;
+}
+.schedule-table .event-col a:hover { border-color: var(--gold); color: var(--white); }
+.schedule-note {
+  font-family: var(--font-mono);
+  font-size: 0.75rem; color: var(--text-dim);
+  margin-top: 1rem; font-style: italic;
+}
+
+/* ── EVENT DETAIL PAGE ── */
+.event-hero {
+  padding: 4rem 1.5rem 3rem;
+  max-width: 1200px; margin: 0 auto;
+  border-bottom: 1px solid var(--border);
+}
+.event-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-weight: 700; color: var(--white);
+  letter-spacing: 0.04em; text-transform: uppercase;
+  line-height: 0.95;
+}
+.event-hero .event-meta {
+  display: flex; gap: 2rem; margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+.event-meta-item {
+  border-left: 2px solid var(--gold);
+  padding-left: 1rem;
+}
+.event-meta-label {
+  font-family: var(--font-mono);
+  font-size: 0.6rem; color: var(--text-dim);
+  letter-spacing: 0.2em; text-transform: uppercase;
+}
+.event-meta-value {
+  font-family: var(--font-display);
+  font-size: 1.1rem; font-weight: 500;
+  color: var(--text); margin-top: 0.15rem;
+}
+.event-badge-tag {
+  display: inline-block;
+  padding: 0.25rem 0.7rem;
+  background: var(--gold);
+  color: #111;
+  font-family: var(--font-mono);
+  font-size: 0.6rem; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+/* ── PRICING TABLE ── */
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem; margin: 1.5rem 0;
+}
+.price-item {
+  padding: 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+.price-item-label {
+  font-size: 0.85rem; color: var(--text-mid);
+}
+.price-item-value {
+  font-family: var(--font-display);
+  font-size: 1.6rem; font-weight: 600;
+  color: var(--white); margin-top: 0.25rem;
+}
+.price-item-note {
+  font-size: 0.75rem; color: var(--text-dim); margin-top: 0.25rem;
+}
+
+/* ── FORMS LIST ── */
+.forms-list {
+  list-style: none; margin: 1.5rem 0; padding: 0;
+}
+.forms-list li {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  margin-bottom: 0.5rem;
+  transition: border-color 0.2s;
+}
+.forms-list li:hover { border-color: var(--gold-dim); }
+.form-number {
+  font-family: var(--font-display);
+  font-size: 1.4rem; font-weight: 700;
+  color: var(--gold); min-width: 2rem;
+}
+.form-name {
+  font-weight: 500; color: var(--text);
+}
+.form-dl {
+  margin-left: auto;
+  font-family: var(--font-mono); font-size: 0.7rem;
+  color: var(--gold); letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── CONTACT FORM ── */
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 3rem; margin-top: 1rem;
+}
+.contact-info-block {
+  margin-bottom: 2rem;
+}
+.contact-info-block h3 {
+  margin-top: 0;
+}
+.contact-form { display: flex; flex-direction: column; gap: 1rem; }
+.contact-form label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem; color: var(--text-dim);
+  letter-spacing: 0.15em; text-transform: uppercase;
+  margin-bottom: 0.25rem; display: block;
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%; padding: 0.75rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text); font-family: var(--font-body);
+  font-size: 0.9rem; outline: none;
+  transition: border-color 0.2s;
+}
+.contact-form input:focus,
+.contact-form textarea:focus { border-color: var(--gold); }
+.contact-form textarea { min-height: 150px; resize: vertical; }
+
+/* ── RIDING SCHOOL LIST ── */
+.school-list { margin: 1.5rem 0; }
+.school-item {
+  display: flex; align-items: center; gap: 1.5rem;
+  padding: 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  margin-bottom: 0.5rem;
+  transition: border-color 0.2s;
+}
+.school-item:hover { border-color: var(--gold-dim); }
+.school-date {
+  font-family: var(--font-mono);
+  font-size: 0.8rem; color: var(--gold);
+  min-width: 100px;
+}
+.school-name {
+  font-weight: 500; color: var(--text);
+}
+.school-note {
+  font-size: 0.8rem; color: var(--text-dim);
+  margin-left: auto;
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  background: #0a0a0a;
+  border-top: 1px solid var(--border);
+  padding: 3rem 1.5rem 1.5rem;
+}
+.footer-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 2.5rem;
+}
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 2rem; font-weight: 700;
+  color: var(--white); letter-spacing: 0.08em;
+}
+.footer-brand-sub {
+  font-family: var(--font-mono);
+  font-size: 0.6rem; color: var(--gold);
+  letter-spacing: 0.2em; margin-top: 0.25rem;
+}
+.footer-desc {
+  color: var(--text-dim); font-size: 0.85rem;
+  margin-top: 1rem; max-width: 280px; line-height: 1.6;
+}
+.footer-col-title {
+  font-family: var(--font-display);
+  font-size: 0.9rem; font-weight: 600;
+  color: var(--text-mid); letter-spacing: 0.1em;
+  text-transform: uppercase; margin-bottom: 1rem;
+}
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 0.5rem; }
+.footer-links a {
+  color: var(--text-dim); font-size: 0.85rem;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-bottom {
+  max-width: 1200px; margin: 2rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 1rem;
+}
+.footer-copy {
+  font-family: var(--font-mono);
+  font-size: 0.65rem; color: var(--text-dim);
+  letter-spacing: 0.1em;
+}
+.footer-social-links {
+  display: flex; gap: 1rem;
+}
+.footer-social-links a {
+  color: var(--text-dim); font-size: 0.85rem;
+  font-family: var(--font-mono); letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+.footer-social-links a:hover { color: var(--gold); }
+
+/* ── CONCEPT WATERMARK ── */
+.concept-mark {
+  position: fixed; bottom: 1.25rem; right: 1.25rem; z-index: 200;
+  background: rgba(10,10,10,0.92);
+  border: 1px solid #222;
+  padding: 0.6rem 1rem 0.5rem;
+  backdrop-filter: blur(16px);
+  text-decoration: none;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 0.3rem;
+  transition: border-color 0.3s;
+}
+.concept-mark:hover { border-color: #a8ff00; }
+.concept-mark-top {
+  font-family: var(--font-mono);
+  font-size: 0.5rem; color: var(--text-dim);
+  letter-spacing: 0.2em; text-transform: uppercase;
+}
+.concept-mark-logo {
+  width: 90px; height: auto;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-hamburger { display: block; }
+  .home-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+  .event-hero .event-meta { flex-direction: column; gap: 1rem; }
+}
+@media (max-width: 600px) {
+  .footer-inner { grid-template-columns: 1fr; }
+  .upcoming-inner { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .upcoming-date { margin-left: 0; }
+  .schedule-table { font-size: 0.8rem; }
+  .schedule-table td, .schedule-table th { padding: 0.6rem 0.5rem; }
+  .price-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═════ NAVIGATION ═════ -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo" onclick="showPage('home')">
+      <img class="nav-logo-img" src="https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/f93158de-ca3f-44c7-854b-6a7568d9ba89/website+logo+207.png" alt="MX207">
+    </a>
+    <ul class="nav-links">
+      <li class="nav-dropdown">
+        <a href="#schedule" onclick="showPage('schedule')">Racing</a>
+        <div class="nav-dropdown-menu">
+          <a href="#schedule" onclick="showPage('schedule')">2026 Schedule</a>
+          <a href="#maine-event" onclick="showPage('maine-event')">The Maine Event 2026</a>
+          <a href="#ama-championship" onclick="showPage('ama-championship')">AMA State Championship</a>
+          <a href="#results" onclick="showPage('results')">Results</a>
+        </div>
+      </li>
+      <li><a href="#practice" onclick="showPage('practice')">Practice</a></li>
+      <li><a href="#schools" onclick="showPage('schools')">Riding Schools</a></li>
+      <li><a href="#forms" onclick="showPage('forms')">Forms</a></li>
+      <li><a href="https://dannystuartphotography.zenfoliosite.com" target="_blank">Photos</a></li>
+      <li><a href="#store" onclick="showPage('store')">Store</a></li>
+      <li><a href="#contact" onclick="showPage('contact')">Contact</a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleMobile()" aria-label="Menu">&#9776;</button>
+  </div>
+</nav>
+
+<!-- Mobile Nav Overlay -->
+<div class="nav-mobile-overlay" id="mobileNav">
+  <button class="nav-mobile-close" onclick="toggleMobile()">&times;</button>
+  <a href="#home" onclick="showPage('home');toggleMobile()">Home</a>
+  <a href="#schedule" onclick="showPage('schedule');toggleMobile()">2026 Schedule</a>
+  <a href="#maine-event" onclick="showPage('maine-event');toggleMobile()">The Maine Event</a>
+  <a href="#ama-championship" onclick="showPage('ama-championship');toggleMobile()">AMA State Championship</a>
+  <a href="#results" onclick="showPage('results');toggleMobile()">Results</a>
+  <a href="#practice" onclick="showPage('practice');toggleMobile()">Practice</a>
+  <a href="#schools" onclick="showPage('schools');toggleMobile()">Riding Schools</a>
+  <a href="#forms" onclick="showPage('forms');toggleMobile()">Forms</a>
+  <a href="https://dannystuartphotography.zenfoliosite.com" target="_blank" onclick="toggleMobile()">Photos</a>
+  <a href="#store" onclick="showPage('store');toggleMobile()">Store</a>
+  <a href="#contact" onclick="showPage('contact');toggleMobile()">Contact</a>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: HOME
+     ═══════════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-video-wrap">
+      <iframe src="https://www.youtube.com/embed/frcQL62eBXk?autoplay=1&mute=1&loop=1&playlist=frcQL62eBXk&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&iv_load_policy=3&start=2" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="hero-bg-texture"></div>
+    <div class="hero-content">
+      <div class="hero-logo-mark"><img src="https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/f93158de-ca3f-44c7-854b-6a7568d9ba89/website+logo+207.png" alt="MX207 — Lyman, Maine | Established 2003"></div>
+      <div class="hero-tagline">Motocross &bull; Racing &bull; Riding Schools &bull; Practice</div>
+      <div class="hero-actions">
+        <a href="#schedule" class="btn btn-gold" onclick="showPage('schedule')">2026 Schedule</a>
+        <a href="#practice" class="btn btn-outline" onclick="showPage('practice')">Practice Info</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming -->
+  <div class="upcoming-bar">
+    <div class="upcoming-inner">
+      <div class="upcoming-label">Up Next</div>
+      <div class="upcoming-event">Maine Motocross</div>
+      <div class="upcoming-date">May 2, 2026</div>
+    </div>
+  </div>
+
+  <!-- Three cards -->
+  <div class="home-grid">
+    <a class="home-card" href="#schedule" onclick="showPage('schedule')">
+      <div class="home-card-bg" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/3fd538cf-b76a-466e-82f0-8258ba461449/Screenshot+2026-04-06+at+9.21.38%E2%80%AFPM+copy.jpg')"></div>
+      <div class="home-card-overlay"></div>
+      <div class="home-card-label">
+        <div class="home-card-title">2026 Events</div>
+        <div class="home-card-sub">Full season schedule</div>
+      </div>
+    </a>
+    <a class="home-card" href="#schools" onclick="showPage('schools')">
+      <div class="home-card-bg" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/6b739769-d482-4161-a886-6e2f97da068a/MX207+Riding+Schools.jpg')"></div>
+      <div class="home-card-overlay"></div>
+      <div class="home-card-label">
+        <div class="home-card-title">Riding Schools</div>
+        <div class="home-card-sub">Professional instruction, all levels</div>
+      </div>
+    </a>
+    <a class="home-card" href="#practice" onclick="showPage('practice')">
+      <div class="home-card-bg" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/21a0fb32-14ec-4eda-bbfa-edaa8e959c2f/webversion.jpg')"></div>
+      <div class="home-card-overlay"></div>
+      <div class="home-card-label">
+        <div class="home-card-title">Practice Days</div>
+        <div class="home-card-sub">Open track sessions</div>
+      </div>
+    </a>
+  </div>
+
+  <!-- Quick Info -->
+  <div class="info-bar">
+    <div class="info-block">
+      <div class="info-block-title">Practice Hours</div>
+      <p><strong>Weekdays:</strong> 2:00 – 7:00 PM<br>
+      <strong>Weekends:</strong> 10:00 AM – 4:00 PM<br>
+      <em>Non-race weekends only.</em></p>
+      <p style="margin-top:0.5rem;"><a href="#practice" onclick="showPage('practice')">Full practice info &rarr;</a></p>
+    </div>
+    <div class="info-block">
+      <div class="info-block-title">Location</div>
+      <p>53 Bartletts Bridge Rd<br>
+      Lyman, ME 04002</p>
+      <p style="margin-top:0.5rem;">Always check <a href="https://instagram.com/mx207" target="_blank">Instagram</a> or <a href="https://facebook.com/mx207" target="_blank">Facebook</a> before heading to the track.</p>
+    </div>
+    <div class="info-block">
+      <div class="info-block-title">New Riders</div>
+      <p>All riders must complete the required forms before riding. Minors need notarized forms.</p>
+      <p style="margin-top:0.5rem;"><a href="#forms" onclick="showPage('forms')">Download forms &rarr;</a></p>
+    </div>
+  </div>
+
+  <!-- Social -->
+  <div class="social-section">
+    <div class="social-header">
+      <div class="social-header-text">@mx207 on Instagram</div>
+    </div>
+    <div class="social-grid">
+      <div class="social-item" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/1670086589506-8KB4H2TOK3RJTNWY3MY3/image-asset.jpeg');background-size:cover;background-position:center;"></div>
+      <div class="social-item" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/1670022478255-3VT5VP3DN1MECI2DGRN6/image-asset.jpeg');background-size:cover;background-position:center;"></div>
+      <div class="social-item" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/1669925882984-D7OMHVUMVEP4REC7PULT/image-asset.jpeg');background-size:cover;background-position:center;"></div>
+      <div class="social-item" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/1669822150682-090EFTJMLEQZ7CV5QWS0/image-asset.jpeg');background-size:cover;background-position:center;"></div>
+      <div class="social-item" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/1669741020748-SAXJ4R1DJZ94Z4J5B3TI/image-asset.jpeg');background-size:cover;background-position:center;"></div>
+      <div class="social-item" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/d2dcbf4d-7457-4765-a677-05c107bdb690/Vicky+Golden_-26.jpg');background-size:cover;background-position:center;"></div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: 2026 SCHEDULE
+     ═══════════════════════════════════════════ -->
+<div class="page" id="page-schedule">
+  <div class="page-header">
+    <h1>2026 Events Schedule</h1>
+  </div>
+  <div class="content">
+    <table class="schedule-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Event</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="date-col">May 2</td>
+          <td class="event-col"><a href="#maine-motocross-may2" onclick="showPage('maine-motocross-may2')">Maine Motocross</a></td>
+        </tr>
+        <tr>
+          <td class="date-col">May 16</td>
+          <td class="event-col"><a href="#maine-motocross-may16" onclick="showPage('maine-motocross-may16')">Maine Motocross + NEMX</a></td>
+        </tr>
+        <tr>
+          <td class="date-col">May 23–24</td>
+          <td class="event-col"><a href="#nesc-may" onclick="showPage('nesc-may')">NESC</a></td>
+        </tr>
+        <tr>
+          <td class="date-col">June 13</td>
+          <td class="event-col"><a href="#maine-motocross-jun13" onclick="showPage('maine-motocross-jun13')">Maine Motocross</a></td>
+        </tr>
+        <tr>
+          <td class="date-col">July 4–5</td>
+          <td class="event-col"><a href="#ama-championship" onclick="showPage('ama-championship')">AMA Maine State Championship</a></td>
+        </tr>
+        <tr>
+          <td class="date-col">July 26</td>
+          <td class="event-col"><a href="#nesc-jul" onclick="showPage('nesc-jul')">NESC</a></td>
+        </tr>
+        <tr>
+          <td class="date-col">August 1</td>
+          <td class="event-col"><a href="#quadcross" onclick="showPage('quadcross')">Quadcross</a></td>
+        </tr>
+        <tr>
+          <td class="date-col">August 8</td>
+          <td class="event-col"><a href="#maine-motocross-aug8" onclick="showPage('maine-motocross-aug8')">Maine Motocross + NEMX</a></td>
+        </tr>
+        <tr>
+          <td class="date-col">August 23</td>
+          <td class="event-col"><a href="#nesc-aug" onclick="showPage('nesc-aug')">NESC</a></td>
+        </tr>
+        <tr>
+          <td class="date-col">Aug 28–29–30</td>
+          <td class="event-col"><a href="#maine-event" onclick="showPage('maine-event')" style="color:var(--gold);">The Maine Event</a></td>
+        </tr>
+        <tr>
+          <td class="date-col">September 12</td>
+          <td class="event-col"><a href="#maine-motocross-sep12" onclick="showPage('maine-motocross-sep12')">Maine Motocross</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="schedule-note">Kid's Nights and Mini Track events will be updated in the Spring.</p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: THE MAINE EVENT
+     ═══════════════════════════════════════════ -->
+<div class="page" id="page-maine-event">
+  <div style="width:100%;height:350px;background:url('https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/5c7b5b02-0923-4241-be68-9fd291187abb/ME2025+Thumb+2.jpg') center/cover no-repeat;position:relative;">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,0.3) 0%,rgba(17,17,17,0.95) 100%);"></div>
+  </div>
+  <div class="event-hero" style="padding-top:2rem;">
+    <div class="event-badge-tag">AMA Featured Event</div>
+    <h1>The Maine<br>Event 2026</h1>
+    <div class="event-meta">
+      <div class="event-meta-item">
+        <div class="event-meta-label">When</div>
+        <div class="event-meta-value">August 28–29–30, 2026</div>
+      </div>
+      <div class="event-meta-item">
+        <div class="event-meta-label">Where</div>
+        <div class="event-meta-value">MX207 — Lyman, Maine</div>
+      </div>
+      <div class="event-meta-item">
+        <div class="event-meta-label">Format</div>
+        <div class="event-meta-value">3 Motos over 2 Days</div>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <p>The biggest stage in the Northeast to prove yourself and see how you match up against the best of the best. Three motos throughout the weekend — Saturday features all first motos and second motos until 6:45pm, Sunday continues with remaining motos and third motos.</p>
+
+    <h2>Schedule</h2>
+    <h3>Thursday</h3>
+    <p>Gates open at 9:00 AM. Track walk at 5:00 PM with Ty Lepicier from Moto Academy. Kids Zone at Kart Track 5:30–7:30 PM — music, bubbles, games, crafts.</p>
+    <h3>Friday</h3>
+    <p>Optional practice 9:00 AM – 3:30 PM ($45). Kids Zone 5:30–7:30 PM. Patra Live Show at 7:15 PM. Live music by Zac Herrin 8:00–9:00 PM.</p>
+    <h3>Saturday</h3>
+    <p>Riders meeting at 8:15 AM. Practice at 8:30 AM. Racing until 6:45 PM. Patra Live Show at 7:15 PM. Live music by Zac Herrin 8:00–9:00 PM.</p>
+    <h3>Sunday</h3>
+    <p>Riders meeting at 8:15 AM. Sight laps at 8:30 AM. Racing followed by awards.</p>
+
+    <h2>Registration</h2>
+    <p>Participants must have an AMA Membership and RaceReady profile to sign up. Online registration is available through iRaceReady. The first ten riders per class who sign up receive priority gate picks in registration order; remaining spots are randomly assigned (excluding 250 &amp; 450 A classes).</p>
+    <p>Refund policy: Riders registering but not participating are eligible for 50% reimbursement until Saturday 6:00 AM.</p>
+
+    <h2>Admission</h2>
+    <div class="price-grid">
+      <div class="price-item">
+        <div class="price-item-label">Thursday Arrival Weekend Pass</div>
+        <div class="price-item-value">$45</div>
+      </div>
+      <div class="price-item">
+        <div class="price-item-label">Friday Arrival Weekend Pass</div>
+        <div class="price-item-value">$45</div>
+      </div>
+      <div class="price-item">
+        <div class="price-item-label">Weekend Admission (Sat/Sun)</div>
+        <div class="price-item-value">$40</div>
+      </div>
+      <div class="price-item">
+        <div class="price-item-label">Sunday Only</div>
+        <div class="price-item-value">$20</div>
+      </div>
+      <div class="price-item">
+        <div class="price-item-label">Wednesday Arrival</div>
+        <div class="price-item-value">$100</div>
+        <div class="price-item-note">per vehicle, $50 each additional day</div>
+      </div>
+    </div>
+
+    <h2>Race Entry Fees</h2>
+    <div class="price-grid">
+      <div class="price-item">
+        <div class="price-item-label">Standard Classes (3-moto)</div>
+        <div class="price-item-value">$70</div>
+      </div>
+      <div class="price-item">
+        <div class="price-item-label">250A &amp; 450A</div>
+        <div class="price-item-value">$80</div>
+      </div>
+      <div class="price-item">
+        <div class="price-item-label">Friday Practice</div>
+        <div class="price-item-value">$45</div>
+      </div>
+    </div>
+
+    <h2>Payouts</h2>
+    <ul>
+      <li><strong>EJP Pro Purse:</strong> Top 7 of both 250A and 450A classes</li>
+      <li><strong>30+ A class:</strong> 100% payback</li>
+      <li><strong>125 Open class:</strong> $300 (1st), $200 (2nd), $100 (3rd)</li>
+    </ul>
+
+    <h2>Qualifier Format</h2>
+    <p>Classes exceeding 47 riders run qualifiers, with heats determining the top 19 riders per class. Following all first motos, LCQs determine the top 5 additional qualifiers.</p>
+
+    <h2>Pit Vehicles</h2>
+    <p>Golf carts and pit bikes permitted with a $15 permit (riders must be 16+). ATVs, full-sized bikes, and race bikes are not allowed as pit vehicles. Operators must use a light when it gets dark. Pit vehicle permits are associated with a racer — misuse will result in penalty for the rider.</p>
+    <p>Golf carts available to rent through CCE's Rental Fleet — contact Beth at 508-322-3025.</p>
+
+    <h2>Parking</h2>
+    <p>Premium parking spots along the start straightaway are available through a lottery system. Standard parking spots are marked and riders can coordinate parking together.</p>
+
+    <h2>Additional Info</h2>
+    <ul>
+      <li>Temporary AMA memberships available for $20</li>
+      <li>Riders may use a second bike if their primary breaks, provided it meets class criteria</li>
+      <li>Pit bikes restricted to scheduled riding times on the RadMoto Mini Track</li>
+      <li>Classes structured around AMA ages and bike sizes</li>
+      <li>Media credentials: <a href="mailto:dstuartmx207@gmail.com">dstuartmx207@gmail.com</a></li>
+      <li>Vendors: contact MX207 staff prior to August 14th to reserve a spot</li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: AMA STATE CHAMPIONSHIP
+     ═══════════════════════════════════════════ -->
+<div class="page" id="page-ama-championship">
+  <div class="event-hero">
+    <img src="https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/4a792f2c-2026-442f-b548-57a0a6fa66fc/MSMC+Logo+2025+Small+Shadow.png" alt="AMA Maine State Championship" style="height:100px;width:auto;margin-bottom:1.5rem;">
+    <h1>AMA Maine State<br>Championship</h1>
+    <div class="event-meta">
+      <div class="event-meta-item">
+        <div class="event-meta-label">When</div>
+        <div class="event-meta-value">July 4–5, 2026</div>
+      </div>
+      <div class="event-meta-item">
+        <div class="event-meta-label">Format</div>
+        <div class="event-meta-value">Saturday Practice, Sunday Race</div>
+      </div>
+      <div class="event-meta-item">
+        <div class="event-meta-label">Sanctioning</div>
+        <div class="event-meta-value">AMA</div>
+      </div>
+    </div>
+  </div>
+  <div class="content">
+    <h2>Schedule</h2>
+
+    <h3>Friday</h3>
+    <ul>
+      <li>Gates open 4:00 PM (arrivals before 4 PM pay additional $50)</li>
+      <li>Balance Bikes and Stacyc Bikes on mini track: 5:00–6:00 PM</li>
+      <li>Radmoto demo rides: 6:00–7:30 PM</li>
+      <li>Mini track riding: $15 (5:00–7:30 PM, both nights)</li>
+    </ul>
+
+    <h3>Saturday</h3>
+    <ul>
+      <li>Practice: 9:30 AM – 3:30 PM (order: 50s, 85s, Novice, 65s, Amateur)</li>
+      <li>Balance/Stacyc bikes: 4:00–5:00 PM</li>
+      <li>Radmoto demos: 5:00–7:30 PM</li>
+      <li>Mini track: $15 (5:00–7:30 PM)</li>
+    </ul>
+
+    <h3>Sunday</h3>
+    <ul>
+      <li>Practice begins 8:30 AM</li>
+      <li>Racing follows practice</li>
+    </ul>
+
+    <h2>Admission &amp; Entry Fees</h2>
+    <div class="price-grid">
+      <div class="price-item">
+        <div class="price-item-label">Friday Arrival</div>
+        <div class="price-item-value">$25</div>
+        <div class="price-item-note">admission band</div>
+      </div>
+      <div class="price-item">
+        <div class="price-item-label">Saturday/Sunday Arrival</div>
+        <div class="price-item-value">$20</div>
+      </div>
+      <div class="price-item">
+        <div class="price-item-label">Saturday Practice</div>
+        <div class="price-item-value">$45</div>
+      </div>
+      <div class="price-item">
+        <div class="price-item-label">Race Entry (first 2 classes)</div>
+        <div class="price-item-value">$40</div>
+      </div>
+      <div class="price-item">
+        <div class="price-item-label">Additional Classes</div>
+        <div class="price-item-value">$20</div>
+        <div class="price-item-note">per class</div>
+      </div>
+    </div>
+    <p>AMA membership required.</p>
+
+    <h2>Sign-Up</h2>
+    <p>Online registration offers discounted transponders, $5 merch voucher, and faster check-in. In-person sign-up available Saturday 5:00–8:15 PM and Sunday 6:45–8:15 AM.</p>
+
+    <h2>Classes</h2>
+    <ul>
+      <li>No Expert classes offered</li>
+      <li>Women's classes: WMX C and WMX A/B (WMX A/B competes for Ronnies of Bennington purse)</li>
+      <li>New E-Moto class competing for AMA #1 state championship plate</li>
+      <li>Micro-E 50cc class added</li>
+    </ul>
+
+    <h2>Pit Riding Rules</h2>
+    <p>Riding to and from your pit is permitted at slow walking speed. No Stacyc in parking lot. Talaria, Surron, and E-Ride bikes permitted to/from track only. Bicycles allowed for transportation.</p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: RESULTS
+     ═══════════════════════════════════════════ -->
+<div class="page" id="page-results">
+  <div class="page-header">
+    <h1>Race Results</h1>
+  </div>
+  <div class="content">
+    <p>For race results, visit the official results portal:</p>
+    <p style="margin-top:1rem;"><a href="http://resultsmx.com/mx207/" target="_blank" class="btn btn-gold">View Results at ResultsMX.com</a></p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: PRACTICE
+     ═══════════════════════════════════════════ -->
+<div class="page" id="page-practice">
+  <div style="width:100%;height:280px;background:url('https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/21a0fb32-14ec-4eda-bbfa-edaa8e959c2f/webversion.jpg') center/cover no-repeat;position:relative;">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,0.3) 0%,rgba(17,17,17,0.95) 100%);"></div>
+  </div>
+  <div class="page-header" style="padding-top:2rem;">
+    <h1>Practice</h1>
+    <div class="subtitle">Open Track Sessions</div>
+  </div>
+  <div class="content">
+    <h2>Hours</h2>
+    <p><strong>Weekday Practices (Thursdays typically):</strong> 2:00 – 7:00 PM</p>
+    <p><strong>Saturday &amp; Sunday:</strong> 10:00 AM – 4:00 PM<br>
+    <em>Non-race weekends only — check the <a href="#schedule" onclick="showPage('schedule')">race schedule</a>.</em></p>
+
+    <h2>Pricing</h2>
+    <div class="price-grid">
+      <div class="price-item">
+        <div class="price-item-label">Main Track (Mon–Thu)</div>
+        <div class="price-item-value">$45</div>
+      </div>
+      <div class="price-item">
+        <div class="price-item-label">Main Track (Fri–Sun)</div>
+        <div class="price-item-value">$50</div>
+      </div>
+      <div class="price-item">
+        <div class="price-item-label">Mini Track</div>
+        <div class="price-item-value">$25</div>
+      </div>
+      <div class="price-item">
+        <div class="price-item-label">Last 2 Hours Discount</div>
+        <div class="price-item-value">$10 off</div>
+      </div>
+    </div>
+
+    <h2>Before You Come</h2>
+    <p><strong>Always check <a href="https://facebook.com/mx207" target="_blank">Facebook</a> or <a href="https://instagram.com/mx207" target="_blank">Instagram</a> before coming to the track.</strong> There will be occasions when the track is closed during the normal schedule due to weather or other circumstances.</p>
+
+    <h2>Requirements</h2>
+    <p>All minors require completed, notarized forms before receiving a Registered Guest Card. Forms are available on the <a href="#forms" onclick="showPage('forms')">forms page</a>.</p>
+
+    <h2>Track Rentals</h2>
+    <p>Track rentals are available on weekdays with standard practice day rules applied. <a href="#contact" onclick="showPage('contact')">Contact us</a> for availability.</p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: RIDING SCHOOLS
+     ═══════════════════════════════════════════ -->
+<div class="page" id="page-schools">
+  <div style="width:100%;height:280px;background:url('https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/6b739769-d482-4161-a886-6e2f97da068a/MX207+Riding+Schools.jpg') center/cover no-repeat;position:relative;">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,0.3) 0%,rgba(17,17,17,0.95) 100%);"></div>
+  </div>
+  <div class="page-header" style="padding-top:2rem;">
+    <h1>Riding Schools</h1>
+    <div class="subtitle">Professional instruction for all levels</div>
+  </div>
+  <div class="content">
+    <p>Various riding schools are available throughout the season. Look below to view what dates and find a riding school that best fits you.</p>
+
+    <h2>2026 Schedule</h2>
+    <div class="school-list">
+      <div class="school-item">
+        <div class="school-date">Apr 29</div>
+        <div class="school-name">Ronnie Stewart Racing Riding School</div>
+      </div>
+      <div class="school-item">
+        <div class="school-date">May 13</div>
+        <div class="school-name">The MX Factory</div>
+      </div>
+      <div class="school-item">
+        <div class="school-date">May 25</div>
+        <div class="school-name">Ronnie Stewart Racing Riding School</div>
+      </div>
+      <div class="school-item">
+        <div class="school-date">Jun 12</div>
+        <div class="school-name">Ronnie Stewart Racing Riding School</div>
+        <div class="school-note">Mini bikes only</div>
+      </div>
+      <div class="school-item">
+        <div class="school-date">Jul 6</div>
+        <div class="school-name">Ronnie Stewart Racing Riding School</div>
+      </div>
+      <div class="school-item">
+        <div class="school-date">Jul 27</div>
+        <div class="school-name">Ronnie Stewart Racing Riding School</div>
+      </div>
+      <div class="school-item">
+        <div class="school-date">Aug 21</div>
+        <div class="school-name">Ronnie Stewart Racing Riding School</div>
+      </div>
+    </div>
+    <p>Contact each provider directly for pricing, enrollment, and additional details.</p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: FORMS
+     ═══════════════════════════════════════════ -->
+<div class="page" id="page-forms">
+  <div class="page-header">
+    <h1>Forms</h1>
+    <div class="subtitle">Required documents for all riders</div>
+  </div>
+  <div class="content">
+    <p><strong>All riders must complete forms 1 and 2.</strong></p>
+    <p>Riders under 18 must complete (and notarize) forms 1, 2, 3, 4. If the minor will ever be riding without their parent present, form 5 will be required (notarized) as well.</p>
+
+    <ul class="forms-list">
+      <li>
+        <div class="form-number">1</div>
+        <div class="form-name">Registered Guest</div>
+        <a href="#" class="form-dl">Download PDF</a>
+      </li>
+      <li>
+        <div class="form-number">2</div>
+        <div class="form-name">Liability Waiver</div>
+        <a href="#" class="form-dl">Download PDF</a>
+      </li>
+      <li>
+        <div class="form-number">3</div>
+        <div class="form-name">Parental Consent</div>
+        <a href="#" class="form-dl">Download PDF</a>
+      </li>
+      <li>
+        <div class="form-number">4</div>
+        <div class="form-name">Minor Assumption of Risk</div>
+        <a href="#" class="form-dl">Download PDF</a>
+      </li>
+      <li>
+        <div class="form-number">5</div>
+        <div class="form-name">Minor without Parent</div>
+        <a href="#" class="form-dl">Download PDF</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: STORE
+     ═══════════════════════════════════════════ -->
+<div class="page" id="page-store">
+  <div class="page-header">
+    <h1>Store</h1>
+  </div>
+  <div class="content">
+    <p><strong>Shirts, windbreakers, and hoodies are available for sale at the track.</strong> Online sales for these items will be back during the winter months.</p>
+    <p>Interested in apparel merchandise? Send an <a href="mailto:Bstuartmx207@gmail.com">email with the items you are interested in</a>.</p>
+
+    <h2>Gift Cards</h2>
+    <div class="price-grid">
+      <div class="price-item">
+        <div class="price-item-label">MX207 Gift Card</div>
+        <div class="price-item-value">$200</div>
+        <div class="price-item-note">Available online</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PAGE: CONTACT
+     ═══════════════════════════════════════════ -->
+<div class="page" id="page-contact">
+  <div class="page-header">
+    <h1>Contact Us</h1>
+  </div>
+  <div class="content">
+    <div class="contact-grid">
+      <div>
+        <div class="contact-info-block">
+          <h3>Track Location</h3>
+          <p>53 Bartletts Bridge Rd<br>Lyman, ME 04002</p>
+        </div>
+        <div class="contact-info-block">
+          <h3>Mailing Address</h3>
+          <p>PO Box 207<br>East Waterboro, ME 04030</p>
+        </div>
+        <div class="contact-info-block">
+          <h3>Email</h3>
+          <p><a href="mailto:Bstuartmx207@gmail.com">Bstuartmx207@gmail.com</a><br>
+          <a href="mailto:Dstuartmx207@gmail.com">Dstuartmx207@gmail.com</a></p>
+        </div>
+        <div class="contact-info-block">
+          <h3>Social</h3>
+          <p><a href="https://instagram.com/mx207" target="_blank">Instagram @mx207</a><br>
+          <a href="https://facebook.com/mx207" target="_blank">Facebook /mx207</a></p>
+        </div>
+      </div>
+      <div>
+        <form class="contact-form" onsubmit="event.preventDefault(); this.innerHTML='<p style=color:var(--gold)>Thank you! We\'ll be in touch.</p>';">
+          <div>
+            <label for="c-name">Name</label>
+            <input type="text" id="c-name" name="name" required>
+          </div>
+          <div>
+            <label for="c-email">Email</label>
+            <input type="email" id="c-email" name="email" required>
+          </div>
+          <div>
+            <label for="c-message">Message</label>
+            <textarea id="c-message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-gold">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     EVENT STUB PAGES
+     (individual event pages linked from schedule)
+     ═══════════════════════════════════════════ -->
+<div class="page" id="page-maine-motocross-may2">
+  <div class="event-hero">
+    <h1>Maine Motocross</h1>
+    <div class="event-meta">
+      <div class="event-meta-item"><div class="event-meta-label">Date</div><div class="event-meta-value">May 2, 2026</div></div>
+      <div class="event-meta-item"><div class="event-meta-label">Location</div><div class="event-meta-value">MX207 — Lyman, ME</div></div>
+    </div>
+  </div>
+  <div class="content">
+    <p>Season opener. Maine Motocross racing at MX207. All classes welcome.</p>
+    <p>Check <a href="https://instagram.com/mx207" target="_blank">@mx207</a> for gate times, class schedule, and day-of updates.</p>
+    <p style="margin-top:2rem;"><a href="#schedule" onclick="showPage('schedule')" class="btn btn-outline">&larr; Back to Schedule</a></p>
+  </div>
+</div>
+
+<div class="page" id="page-maine-motocross-may16">
+  <div class="event-hero">
+    <h1>Maine Motocross + NEMX</h1>
+    <div class="event-meta">
+      <div class="event-meta-item"><div class="event-meta-label">Date</div><div class="event-meta-value">May 16, 2026</div></div>
+      <div class="event-meta-item"><div class="event-meta-label">Series</div><div class="event-meta-value">NEMX</div></div>
+    </div>
+  </div>
+  <div class="content">
+    <p>Maine Motocross combined with NEMX points racing. All classes.</p>
+    <p style="margin-top:2rem;"><a href="#schedule" onclick="showPage('schedule')" class="btn btn-outline">&larr; Back to Schedule</a></p>
+  </div>
+</div>
+
+<div class="page" id="page-nesc-may">
+  <div class="event-hero">
+    <h1>NESC</h1>
+    <div class="event-meta">
+      <div class="event-meta-item"><div class="event-meta-label">Date</div><div class="event-meta-value">May 23–24, 2026</div></div>
+    </div>
+  </div>
+  <div class="content">
+    <p>New England Supercross Championship at MX207.</p>
+    <p style="margin-top:2rem;"><a href="#schedule" onclick="showPage('schedule')" class="btn btn-outline">&larr; Back to Schedule</a></p>
+  </div>
+</div>
+
+<div class="page" id="page-maine-motocross-jun13">
+  <div class="event-hero">
+    <h1>Maine Motocross</h1>
+    <div class="event-meta">
+      <div class="event-meta-item"><div class="event-meta-label">Date</div><div class="event-meta-value">June 13, 2026</div></div>
+    </div>
+  </div>
+  <div class="content">
+    <p>Mid-season Maine Motocross at MX207. All classes.</p>
+    <p style="margin-top:2rem;"><a href="#schedule" onclick="showPage('schedule')" class="btn btn-outline">&larr; Back to Schedule</a></p>
+  </div>
+</div>
+
+<div class="page" id="page-nesc-jul">
+  <div class="event-hero">
+    <h1>NESC</h1>
+    <div class="event-meta">
+      <div class="event-meta-item"><div class="event-meta-label">Date</div><div class="event-meta-value">July 26, 2026</div></div>
+    </div>
+  </div>
+  <div class="content">
+    <p>New England Supercross Championship at MX207.</p>
+    <p style="margin-top:2rem;"><a href="#schedule" onclick="showPage('schedule')" class="btn btn-outline">&larr; Back to Schedule</a></p>
+  </div>
+</div>
+
+<div class="page" id="page-quadcross">
+  <div class="event-hero">
+    <h1>Quadcross</h1>
+    <div class="event-meta">
+      <div class="event-meta-item"><div class="event-meta-label">Date</div><div class="event-meta-value">August 1, 2026</div></div>
+    </div>
+  </div>
+  <div class="content">
+    <p>ATV racing at MX207. Quadcross event day.</p>
+    <p style="margin-top:2rem;"><a href="#schedule" onclick="showPage('schedule')" class="btn btn-outline">&larr; Back to Schedule</a></p>
+  </div>
+</div>
+
+<div class="page" id="page-maine-motocross-aug8">
+  <div class="event-hero">
+    <h1>Maine Motocross + NEMX</h1>
+    <div class="event-meta">
+      <div class="event-meta-item"><div class="event-meta-label">Date</div><div class="event-meta-value">August 8, 2026</div></div>
+      <div class="event-meta-item"><div class="event-meta-label">Series</div><div class="event-meta-value">NEMX</div></div>
+    </div>
+  </div>
+  <div class="content">
+    <p>Maine Motocross combined with NEMX points racing. All classes.</p>
+    <p style="margin-top:2rem;"><a href="#schedule" onclick="showPage('schedule')" class="btn btn-outline">&larr; Back to Schedule</a></p>
+  </div>
+</div>
+
+<div class="page" id="page-nesc-aug">
+  <div class="event-hero">
+    <h1>NESC</h1>
+    <div class="event-meta">
+      <div class="event-meta-item"><div class="event-meta-label">Date</div><div class="event-meta-value">August 23, 2026</div></div>
+    </div>
+  </div>
+  <div class="content">
+    <p>New England Supercross Championship at MX207.</p>
+    <p style="margin-top:2rem;"><a href="#schedule" onclick="showPage('schedule')" class="btn btn-outline">&larr; Back to Schedule</a></p>
+  </div>
+</div>
+
+<div class="page" id="page-maine-motocross-sep12">
+  <div class="event-hero">
+    <h1>Maine Motocross</h1>
+    <div class="event-meta">
+      <div class="event-meta-item"><div class="event-meta-label">Date</div><div class="event-meta-value">September 12, 2026</div></div>
+    </div>
+  </div>
+  <div class="content">
+    <p>Season closer. Maine Motocross at MX207. All classes.</p>
+    <p style="margin-top:2rem;"><a href="#schedule" onclick="showPage('schedule')" class="btn btn-outline">&larr; Back to Schedule</a></p>
+  </div>
+</div>
+
+
+<!-- ═════ FOOTER (shared across all pages) ═════ -->
+<footer class="site-footer" id="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div style="overflow:hidden;height:45px;margin-bottom:0.5rem;"><img src="https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/f93158de-ca3f-44c7-854b-6a7568d9ba89/website+logo+207.png" alt="MX207" style="height:80px;width:auto;margin-top:-8px;"></div>
+      <p class="footer-desc">53 Bartletts Bridge Rd, Lyman, ME 04002</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Racing</div>
+      <ul class="footer-links">
+        <li><a href="#schedule" onclick="showPage('schedule')">2026 Schedule</a></li>
+        <li><a href="#maine-event" onclick="showPage('maine-event')">The Maine Event</a></li>
+        <li><a href="#ama-championship" onclick="showPage('ama-championship')">AMA Championship</a></li>
+        <li><a href="#results" onclick="showPage('results')">Results</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Ride</div>
+      <ul class="footer-links">
+        <li><a href="#practice" onclick="showPage('practice')">Practice</a></li>
+        <li><a href="#schools" onclick="showPage('schools')">Riding Schools</a></li>
+        <li><a href="#forms" onclick="showPage('forms')">Forms</a></li>
+        <li><a href="#store" onclick="showPage('store')">Store</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Connect</div>
+      <ul class="footer-links">
+        <li><a href="#contact" onclick="showPage('contact')">Contact Us</a></li>
+        <li><a href="https://dannystuartphotography.zenfoliosite.com" target="_blank">Photos</a></li>
+        <li><a href="https://instagram.com/mx207" target="_blank">Instagram</a></li>
+        <li><a href="https://facebook.com/mx207" target="_blank">Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">&copy; 2026 MX207. All rights reserved.</div>
+    <div class="footer-social-links">
+      <a href="https://instagram.com/mx207" target="_blank">Instagram</a>
+      <a href="https://facebook.com/mx207" target="_blank">Facebook</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Concept watermark -->
+<a href="https://sociavisual.com" target="_blank" class="concept-mark">
+  <div class="concept-mark-top">Site Demo</div>
+  <svg class="concept-mark-logo" viewBox="0 0 2098.6 515.2" xmlns="http://www.w3.org/2000/svg">
+    <polygon fill="#a8ff00" points="633.2 164 567 236.2 546.5 258.5 480.3 330.8 100.9 330.8 167.1 258.5 452.9 258.5 473.4 236.2 187.6 236.2 253.8 164 633.2 164"/>
+    <g fill="#a8ff00">
+      <polygon points="1059 69.5 992.8 141.7 907.3 234.9 813.7 234.9 899.2 141.7 274.3 141.7 340.5 69.5 1059 69.5"/>
+      <polygon points="735.7 258.5 1190.5 258.5 1124.3 330.8 505.5 330.8 658.4 164 752.1 164 665.4 258.5 735.7 258.5 735.7 258.5"/>
+      <polygon points="1997.7 330.8 1562 330.8 1628.2 258.6 1837.9 258.6 1731.9 143 1707.6 143 1535.4 330.8 1146.8 330.8 1213 258.6 1279.3 258.6 1386.4 141.7 1111.7 141.7 1026.3 234.9 932.6 234.9 1084.3 69.5 1658.7 69.5 1592.4 141.7 1480.1 141.7 1478.9 143 1372.9 258.6 1508 258.6 1681.4 69.5 1758.1 69.5 1997.7 330.8"/>
+    </g>
+    <g fill="#a8ff00">
+      <path d="M100.9,382.6h35.7l1.9,29.1,25.6-29.1h45.7l-61.1,63.8h-40.7l-7.1-63.8Z"/>
+      <path d="M495,446.4h-41.2l27-63.8h41.2l-27,63.8Z"/>
+      <path d="M767.2,446.4l5.5-12.9h47.7c.3,0,.5-.3.8-.8l.4-1.1c0-.1,0-.3,0-.5l-32.2-21.7c-.8-.6-1.4-1.3-1.7-2.2s-.5-2-.5-3.2c0-2,.3-4.2,1-6.5.7-2.3,1.4-4.3,2.2-5.9l1.7-3.9c.6-1.4,1.5-2.6,2.8-3.5,1.3-1,2.6-1.5,3.9-1.5h94l-5.5,12.9h-54.9c-.7,0-1.2.5-1.6,1.6-.1,1,0,1.6.4,1.6l38.3,26.1c.8.6,1.4,1.3,1.7,2.2s.5,1.9.5,3c0,1.6-.3,3.1-1,4.6l-3.2,7.7c-1.2,2.8-3.2,4.3-5.9,4.3h-94.7Z"/>
+      <path d="M1245.9,446.4h-97.3c-1.7,0-3.1-.4-4.1-1.2-1-.8-1.7-1.8-2.1-2.9-.4-1.1-.5-2.4-.4-3.7.1-1.4.4-2.6.9-3.8l22.1-52.1h41.2l-20.6,48.6c-.2.6-.3,1.1-.2,1.6.1.5.5.7,1.1.7h23.3l21.6-50.9h41.3l-27,63.8Z"/>
+      <path d="M1626,446.4h-41.3l9.3-21.8h-25.3l-9.3,21.8h-41.2l22-52c.5-1.1,1.3-2.4,2.3-3.7,1-1.4,2.2-2.7,3.6-3.8,1.4-1.2,2.9-2.2,4.6-3,1.7-.8,3.4-1.2,5.1-1.2h97.3l-27,63.8ZM1574,411.7h25.3l6.9-16.2h-23.3c-.7,0-1.2.2-1.7.7-.5.5-.9,1-1.2,1.6l-5.9,13.9Z"/>
+      <path d="M1898.1,446.4l27-63.8h41.2l-21.6,50.9h52.9l-5.5,12.9h-94.1Z"/>
+    </g>
+    <polyline fill="none" stroke="#a8ff00" stroke-miterlimit="10" points="642.7 141 368 141 282.6 234.2 187.6 236.2 340.6 68.8 610.3 68.8"/>
+  </svg>
+</a>
+
+<script>
+/* ── Page routing ── */
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const page = document.getElementById('page-' + id);
+  if (page) {
+    page.classList.add('active');
+    window.scrollTo(0, 0);
+  }
+  // Update nav active state
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+}
+
+/* Handle hash on load */
+window.addEventListener('DOMContentLoaded', () => {
+  const hash = window.location.hash.replace('#', '');
+  if (hash && document.getElementById('page-' + hash)) {
+    showPage(hash);
+  }
+});
+
+/* Mobile nav */
+function toggleMobile() {
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+</script>
+</body>
+</html>
