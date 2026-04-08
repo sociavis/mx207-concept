@@ -647,6 +647,107 @@ img { max-width: 100%; display: block; }
   width: 90px; height: auto;
 }
 
+/* ── PRELOADER ── */
+.preloader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: #0a0a0a;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 1.5rem;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.preloader.out {
+  opacity: 0; visibility: hidden; pointer-events: none;
+}
+.preloader-logo {
+  width: 220px; overflow: hidden;
+  opacity: 0;
+  animation: pre-logo 0.6s ease 0.2s forwards;
+}
+.preloader-logo img {
+  width: 100%; height: auto;
+  margin-top: -22%; margin-bottom: -18%;
+}
+@keyframes pre-logo {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.preloader-bar {
+  width: 160px; height: 2px;
+  background: #222; border-radius: 1px;
+  overflow: hidden;
+  opacity: 0;
+  animation: pre-fade 0.4s ease 0.5s forwards;
+}
+@keyframes pre-fade {
+  to { opacity: 1; }
+}
+.preloader-bar-fill {
+  height: 100%; width: 0%;
+  background: var(--gold);
+  animation: pre-fill 1.4s ease 0.6s forwards;
+}
+@keyframes pre-fill {
+  0%   { width: 0%; }
+  50%  { width: 70%; }
+  100% { width: 100%; }
+}
+
+/* ── ENTRANCE ANIMATIONS ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Stagger children */
+.reveal-stagger > .reveal:nth-child(1) { transition-delay: 0s; }
+.reveal-stagger > .reveal:nth-child(2) { transition-delay: 0.08s; }
+.reveal-stagger > .reveal:nth-child(3) { transition-delay: 0.16s; }
+.reveal-stagger > .reveal:nth-child(4) { transition-delay: 0.24s; }
+.reveal-stagger > .reveal:nth-child(5) { transition-delay: 0.32s; }
+.reveal-stagger > .reveal:nth-child(6) { transition-delay: 0.4s; }
+/* Fade-only variant */
+.reveal-fade {
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+.reveal-fade.visible { opacity: 1; }
+/* Scale-up variant */
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+/* Slide from left */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+/* Hero-specific entrance (plays after preloader) */
+.hero-enter { opacity: 0; }
+.hero-enter.go {
+  animation: hero-in 0.8s ease forwards;
+}
+.hero-enter.go.d1 { animation-delay: 0.1s; }
+.hero-enter.go.d2 { animation-delay: 0.25s; }
+.hero-enter.go.d3 { animation-delay: 0.4s; }
+@keyframes hero-in {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .nav-links { display: none; }
@@ -667,6 +768,14 @@ img { max-width: 100%; display: block; }
 </style>
 </head>
 <body>
+
+<!-- ═════ PRELOADER ═════ -->
+<div class="preloader" id="preloader">
+  <div class="preloader-logo">
+    <img src="https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/f93158de-ca3f-44c7-854b-6a7568d9ba89/website+logo+207.png" alt="MX207">
+  </div>
+  <div class="preloader-bar"><div class="preloader-bar-fill"></div></div>
+</div>
 
 <!-- ═════ NAVIGATION ═════ -->
 <nav class="site-nav">
@@ -724,9 +833,9 @@ img { max-width: 100%; display: block; }
     </div>
     <div class="hero-bg-texture"></div>
     <div class="hero-content">
-      <div class="hero-logo-mark"><img src="https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/f93158de-ca3f-44c7-854b-6a7568d9ba89/website+logo+207.png" alt="MX207 — Lyman, Maine | Established 2003"></div>
-      <div class="hero-tagline">Motocross &bull; Racing &bull; Riding Schools &bull; Practice</div>
-      <div class="hero-actions">
+      <div class="hero-logo-mark hero-enter d1"><img src="https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/f93158de-ca3f-44c7-854b-6a7568d9ba89/website+logo+207.png" alt="MX207 — Lyman, Maine | Established 2003"></div>
+      <div class="hero-tagline hero-enter d2">Motocross &bull; Racing &bull; Riding Schools &bull; Practice</div>
+      <div class="hero-actions hero-enter d3">
         <a href="#schedule" class="btn btn-gold" onclick="showPage('schedule')">2026 Schedule</a>
         <a href="#practice" class="btn btn-outline" onclick="showPage('practice')">Practice Info</a>
       </div>
@@ -734,7 +843,7 @@ img { max-width: 100%; display: block; }
   </section>
 
   <!-- Upcoming -->
-  <div class="upcoming-bar">
+  <div class="upcoming-bar reveal-fade">
     <div class="upcoming-inner">
       <div class="upcoming-label">Up Next</div>
       <div class="upcoming-event">Maine Motocross</div>
@@ -743,8 +852,8 @@ img { max-width: 100%; display: block; }
   </div>
 
   <!-- Three cards -->
-  <div class="home-grid">
-    <a class="home-card" href="#schedule" onclick="showPage('schedule')">
+  <div class="home-grid reveal-stagger">
+    <a class="home-card reveal" href="#schedule" onclick="showPage('schedule')">
       <div class="home-card-bg" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/3fd538cf-b76a-466e-82f0-8258ba461449/Screenshot+2026-04-06+at+9.21.38%E2%80%AFPM+copy.jpg')"></div>
       <div class="home-card-overlay"></div>
       <div class="home-card-label">
@@ -752,7 +861,7 @@ img { max-width: 100%; display: block; }
         <div class="home-card-sub">Full season schedule</div>
       </div>
     </a>
-    <a class="home-card" href="#schools" onclick="showPage('schools')">
+    <a class="home-card reveal" href="#schools" onclick="showPage('schools')">
       <div class="home-card-bg" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/6b739769-d482-4161-a886-6e2f97da068a/MX207+Riding+Schools.jpg')"></div>
       <div class="home-card-overlay"></div>
       <div class="home-card-label">
@@ -760,7 +869,7 @@ img { max-width: 100%; display: block; }
         <div class="home-card-sub">Professional instruction, all levels</div>
       </div>
     </a>
-    <a class="home-card" href="#practice" onclick="showPage('practice')">
+    <a class="home-card reveal" href="#practice" onclick="showPage('practice')">
       <div class="home-card-bg" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/21a0fb32-14ec-4eda-bbfa-edaa8e959c2f/webversion.jpg')"></div>
       <div class="home-card-overlay"></div>
       <div class="home-card-label">
@@ -771,21 +880,21 @@ img { max-width: 100%; display: block; }
   </div>
 
   <!-- Quick Info -->
-  <div class="info-bar">
-    <div class="info-block">
+  <div class="info-bar reveal-stagger">
+    <div class="info-block reveal">
       <div class="info-block-title">Practice Hours</div>
       <p><strong>Weekdays:</strong> 2:00 – 7:00 PM<br>
       <strong>Weekends:</strong> 10:00 AM – 4:00 PM<br>
       <em>Non-race weekends only.</em></p>
       <p style="margin-top:0.5rem;"><a href="#practice" onclick="showPage('practice')">Full practice info &rarr;</a></p>
     </div>
-    <div class="info-block">
+    <div class="info-block reveal">
       <div class="info-block-title">Location</div>
       <p>53 Bartletts Bridge Rd<br>
       Lyman, ME 04002</p>
       <p style="margin-top:0.5rem;">Always check <a href="https://instagram.com/mx207" target="_blank">Instagram</a> or <a href="https://facebook.com/mx207" target="_blank">Facebook</a> before heading to the track.</p>
     </div>
-    <div class="info-block">
+    <div class="info-block reveal">
       <div class="info-block-title">New Riders</div>
       <p>All riders must complete the required forms before riding. Minors need notarized forms.</p>
       <p style="margin-top:0.5rem;"><a href="#forms" onclick="showPage('forms')">Download forms &rarr;</a></p>
@@ -797,7 +906,7 @@ img { max-width: 100%; display: block; }
     <div class="social-header">
       <div class="social-header-text">@mx207 on Instagram</div>
     </div>
-    <div class="social-grid">
+    <div class="social-grid reveal-fade">
       <div class="social-item" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/1670086589506-8KB4H2TOK3RJTNWY3MY3/image-asset.jpeg');background-size:cover;background-position:center;"></div>
       <div class="social-item" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/1670022478255-3VT5VP3DN1MECI2DGRN6/image-asset.jpeg');background-size:cover;background-position:center;"></div>
       <div class="social-item" style="background-image:url('https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/1669925882984-D7OMHVUMVEP4REC7PULT/image-asset.jpeg');background-size:cover;background-position:center;"></div>
@@ -1530,7 +1639,7 @@ img { max-width: 100%; display: block; }
 <footer class="site-footer" id="site-footer">
   <div class="footer-inner">
     <div>
-      <div style="overflow:hidden;height:45px;margin-bottom:0.5rem;"><img src="https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/f93158de-ca3f-44c7-854b-6a7568d9ba89/website+logo+207.png" alt="MX207" style="height:80px;width:auto;margin-top:-8px;"></div>
+      <div style="overflow:hidden;height:55px;margin-bottom:0.5rem;"><img src="https://images.squarespace-cdn.com/content/v1/6229512cfa0a467122c9d85d/f93158de-ca3f-44c7-854b-6a7568d9ba89/website+logo+207.png" alt="MX207" style="height:95px;width:auto;margin-top:-10px;"></div>
       <p class="footer-desc">53 Bartletts Bridge Rd, Lyman, ME 04002</p>
     </div>
     <div>
@@ -1593,6 +1702,35 @@ img { max-width: 100%; display: block; }
 </a>
 
 <script>
+/* ── Preloader ── */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('preloader').classList.add('out');
+    // Trigger hero entrance after preloader fades
+    setTimeout(() => {
+      document.querySelectorAll('.hero-enter').forEach(el => el.classList.add('go'));
+    }, 300);
+  }, 2200);
+});
+
+/* ── Scroll reveal (IntersectionObserver) ── */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+function observeReveals() {
+  document.querySelectorAll('.reveal, .reveal-fade, .reveal-scale, .reveal-left').forEach(el => {
+    if (!el.classList.contains('visible')) {
+      revealObserver.observe(el);
+    }
+  });
+}
+
 /* ── Page routing ── */
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -1600,8 +1738,9 @@ function showPage(id) {
   if (page) {
     page.classList.add('active');
     window.scrollTo(0, 0);
+    // Re-observe any reveals on the new page
+    requestAnimationFrame(() => observeReveals());
   }
-  // Update nav active state
   document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
 }
 
@@ -1611,6 +1750,7 @@ window.addEventListener('DOMContentLoaded', () => {
   if (hash && document.getElementById('page-' + hash)) {
     showPage(hash);
   }
+  observeReveals();
 });
 
 /* Mobile nav */
